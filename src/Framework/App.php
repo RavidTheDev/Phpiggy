@@ -6,7 +6,6 @@ namespace Framework;
 
 class App
 {
-
     private Router $router;
     private Container $container;
 
