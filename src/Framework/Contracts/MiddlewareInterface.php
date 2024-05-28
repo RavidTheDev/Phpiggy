@@ -6,6 +6,5 @@ namespace Framework\Contracts;
 
 interface MiddlewareInterFace
 {
-
     public function process(callable $next);
 }
