@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Framework\Contracts;
 
-interface MiddlewareInterFace
+interface MiddlewareInterface
 {
     public function process(callable $next);
 }

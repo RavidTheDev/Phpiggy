@@ -9,13 +9,12 @@ use App\Config\Paths;
 
 class HomeController
 {
-
     public function __construct(private TemplateEngine $view)
     {
     }
 
     public function home()
     {
-        echo $this->view->render("/index.php", ['title' => 'Home Page']);
+        echo $this->view->render("index.php");
     }
 }
