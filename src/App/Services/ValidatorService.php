@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use ArrayAccess;
 use Framework\Validator;
 use Framework\Rules\{RequiredRule, EmailRule, MinRule, InRule, URLRule, MatchRule};
 
@@ -36,5 +37,16 @@ class ValidatorService
             'confirmPassword' => ['required', 'match:password'],
             'tos' => ['required']
         ]);
+    }
+
+    public function validateLogin(array $formData)
+    {
+        $this->validator->validate(
+            $formData,
+            [
+                'email' => ['required', 'email'],
+                'password' => ['required']
+            ]
+        );
     }
 }
