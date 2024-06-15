@@ -42,6 +42,9 @@ class UserService
                 'url' => $formData['socialMediaURL']
             ]
         );
+
+        session_regenerate_id();
+        $_SESSION['user'] = $this->db->id();
     }
 
     public function login(array $formData)
@@ -55,7 +58,15 @@ class UserService
         if (!$user || !$passwordMatch) {
             throw new ValidationException(['password' => ['Invalid Credentials']]);
         }
+        session_regenerate_id();
 
         $_SESSION['user'] = $user['id'];
+    }
+
+    public function logout()
+    {
+        unset($_SESSION['user']);
+
+        session_regenerate_id();
     }
 }
