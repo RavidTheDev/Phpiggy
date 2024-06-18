@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Framework;
 
-
 class Router
 {
   private array $routes = [];
@@ -19,7 +18,6 @@ class Router
       'method' => strtoupper($method),
       'controller' => $controller,
       'middlewares' => []
-
     ];
   }
 

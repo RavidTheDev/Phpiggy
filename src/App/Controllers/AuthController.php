@@ -9,43 +9,47 @@ use App\Services\{ValidatorService, UserService};
 
 class AuthController
 {
-    public function __construct(private TemplateEngine $view, private ValidatorService $validatorService, private UserService $userService)
-    {
-    }
+  public function __construct(
+    private TemplateEngine $view,
+    private ValidatorService $validatorService,
+    private UserService $userService
+  ) {
+  }
 
-    public function registerView()
-    {
-        echo $this->view->render("register.php");
-    }
-    public function register()
-    {
-        $this->validatorService->validateRegister($_POST);
+  public function registerView()
+  {
+    echo $this->view->render("register.php");
+  }
 
-        $this->userService->isEmailTaken($_POST['email']);
+  public function register()
+  {
+    $this->validatorService->validateRegister($_POST);
 
-        $this->userService->create($_POST);
+    $this->userService->isEmailTaken($_POST['email']);
 
-        redirectTo('/');
-    }
+    $this->userService->create($_POST);
 
-    public function loginView()
-    {
-        echo $this->view->render('login.php');
-    }
+    redirectTo('/');
+  }
 
-    public function login()
-    {
-        $this->validatorService->validateLogin($_POST);
+  public function loginView()
+  {
+    echo $this->view->render("login.php");
+  }
 
-        $this->userService->login($_POST);
+  public function login()
+  {
+    $this->validatorService->validateLogin($_POST);
 
-        redirectTo('/');
-    }
+    $this->userService->login($_POST);
 
-    public function logout()
-    {
-        $this->userService->logout();
+    redirectTo('/');
+  }
 
-        redirectTo('/login');
-    }
+  public function logout()
+  {
+    $this->userService->logout();
+
+    redirectTo('/login');
+  }
 }
