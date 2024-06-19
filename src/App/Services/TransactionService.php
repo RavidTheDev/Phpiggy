@@ -16,7 +16,8 @@ class TransactionService
     {
         $formattedDate = "{$formData['date']} 00:00:00";
         $this->db->query(
-            "INSERT INTO transactions(user_id,description,amount,date) VALUES(:user_id,:description,:amount,:date)",
+            "INSERT INTO transactions(user_id,description,amount,date)
+            VALUES(:user_id,:description,:amount,:date)",
             [
                 'user_id' => $_SESSION['user'],
                 'description' => $formData['description'],
@@ -24,5 +25,16 @@ class TransactionService
                 'date' => $formattedDate
             ]
         );
+    }
+
+    public function getUserTransactions()
+    {
+        $transactions = $this->db->query(
+            "SELECT FROM transactions WHERE user_id = :user_id",
+            [
+                'user_id' => $_SESSION['user']
+            ]
+        )->findAll();
+        return $transactions;
     }
 }

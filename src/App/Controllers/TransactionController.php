@@ -7,7 +7,6 @@ namespace App\Controllers;
 use Framework\TemplateEngine;
 use App\Services\{ValidatorService, TransactionService};
 
-
 class TransactionController
 {
     public function __construct(
@@ -28,6 +27,6 @@ class TransactionController
 
         $this->transactionService->create($_POST);
 
-        redirectTo("/");
+        redirectTo('/');
     }
 }
