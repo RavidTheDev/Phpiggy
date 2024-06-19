@@ -35,7 +35,7 @@ class ValidatorService
     $this->validator->add('match', new MatchRule());
     $this->validator->add('lengthMax', new LengthMaxRule());
     $this->validator->add('numeric', new NumericRule());
-    $this->validator->add('dateFormat', new GlobalDateFormatRule());
+    $this->validator->add('dateFormat', new DateFormatRule());
   }
 
   public function validateRegister(array $formData)
@@ -59,7 +59,7 @@ class ValidatorService
     ]);
   }
 
-  public function validateTransaction($formData)
+  public function validateTransaction(array $formData)
   {
     $this->validator->validate($formData, [
       'description' => ['required', 'lengthMax:255'],
