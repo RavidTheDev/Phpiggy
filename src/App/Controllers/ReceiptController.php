@@ -34,6 +34,7 @@ class ReceiptController
         if (!$transaction) {
             redirectTo("/");
         }
+
         $receiptFile = $_FILES['receipt'] ?? null;
 
         $this->receiptService->validateFile($receiptFile);
@@ -48,6 +49,7 @@ class ReceiptController
         $transaction = $this->transactionService->getUserTransaction(
             $params['transaction']
         );
+
         if (empty($transaction)) {
             redirectTo('/');
         }
@@ -70,6 +72,7 @@ class ReceiptController
         $transaction = $this->transactionService->getUserTransaction(
             $params['transaction']
         );
+
         if (empty($transaction)) {
             redirectTo('/');
         }

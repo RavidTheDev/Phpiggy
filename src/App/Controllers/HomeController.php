@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use Framework\TemplateEngine;
-use App\Config\Paths;
 use App\Services\TransactionService;
 
 class HomeController
 {
-  public function __construct(private TemplateEngine $view, private TransactionService $transactionService)
-  {
+  public function __construct(
+    private TemplateEngine $view,
+    private TransactionService $transactionService
+  ) {
   }
 
   public function home()
@@ -49,7 +50,6 @@ class HomeController
       'nextPageQuery' => http_build_query([
         'p' => $page + 1,
         's' => $searchTerm
-
       ]),
       'pageLinks' => $pageLinks,
       'searchTerm' => $searchTerm

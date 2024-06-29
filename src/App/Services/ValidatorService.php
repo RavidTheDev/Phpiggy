@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use DateFormatRule as GlobalDateFormatRule;
 use Framework\Validator;
 use Framework\Rules\{
   RequiredRule,
@@ -17,7 +16,6 @@ use Framework\Rules\{
   NumericRule,
   DateFormatRule
 };
-
 
 class ValidatorService
 {

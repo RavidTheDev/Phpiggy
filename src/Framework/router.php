@@ -54,7 +54,6 @@ class Router
 
       $params = array_combine($paramKeys, $paramValues);
 
-
       [$class, $function] = $route['controller'];
 
       $controllerInstance = $container ?
